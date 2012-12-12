@@ -1,2 +1,2 @@
-Bootstrap-Modal-Form
+Bootstrap Modal Form
 ====================
