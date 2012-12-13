@@ -99,6 +99,12 @@ function modalForm(data, url) {
     }).appendTo($form);
   });
 
+  // Add loading state text to modal footer buttons.
+  $form.find('.modal-footer .btn').click(function() {
+    var btn = $(this);
+    btn.button('loading');
+  });
+
   // When submitting the form, send it via Ajax, hide the current modal, and
   // replace it with a new modal form.
   $form.submit(function() {
