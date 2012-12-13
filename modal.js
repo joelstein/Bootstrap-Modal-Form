@@ -59,8 +59,10 @@ function modalForm(data, url) {
   // Move form actions to modal footer.
   $form.find('.form-actions').addClass('modal-footer').appendTo($form).removeClass('form-actions');
 
-  // Add a Cancel button, if non is present.
-  if ($form.find('.modal-footer .btn:contains(Cancel)').length == 0) {
+  // Look for Cancel <a> button. Needs to be an <a> element, so on the actual
+  // form page, it will work as a link. It also needs to have a
+  // data-dismiss="modal" attribute. If this is not found, add a Cancel button.
+  if ($form.find('.modal-footer a.btn[data-dismiss=modal]:contains(Cancel)').length == 0) {
     $form.find('.modal-footer').append('<button href="' + window.location + '" class="btn" data-dismiss="modal">Cancel</button>');
   }
 
