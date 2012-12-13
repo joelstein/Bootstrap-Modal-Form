@@ -87,7 +87,7 @@ function modalForm(data, url) {
 
   // When submitting the form, send it via Ajax, hide the current modal, and
   // replace it with a new modal form.
-  $form.find('[type=submit]').click(function() {
+  $form.submit(function() {
     $.ajax({
       url: $form.attr('action'),
       data: $form.serialize(),
