@@ -86,24 +86,23 @@ function modalForm(data, url) {
   }
 
   // Attach delegated click handler, not on the buttons themselves, but on the
-  // form, so that we catch the event as it's bubbling up. This allows the
+  // form, so that we catch the click event as it's bubbling up. This allows the
   // buttons to decide whether or not continue, based on their own logic (such
-  // as with a delete button and its confirm dialog). Anyway, if the clicked
-  // button has a name attribute, store it as a hidden field, so that it gets
-  // submitted with the form (the form itself won't include the button value,
-  // because it's not attached to the submit handler below).
+  // as with a delete button and its confirm dialog).
   $form.on('click', '.modal-footer .btn[name]', function() {
+    // If the clicked button has a name attribute, store it as a hidden field,
+    // so that it gets submitted with the form (the form itself won't include
+    // the button value, because it's not attached to the submit handler
+    // below).
     $('<input type="hidden" />').attr({
       'name': $(this).attr('name'),
       'value': $(this).attr('value')
     }).appendTo($form);
+
+    // Add loading state text to the buttons.
+    $(this).button('loading');
   });
 
-  // Add loading state text to modal footer buttons.
-  $form.find('.modal-footer .btn').click(function() {
-    var btn = $(this);
-    btn.button('loading');
-  });
 
   // When submitting the form, send it via Ajax, hide the current modal, and
   // replace it with a new modal form.
