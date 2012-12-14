@@ -27,6 +27,12 @@ function modalForm(data, url) {
   // Redirect if a redirect value is present.
   if (data.redirect) {
     window.location = data.redirect;
+
+    // In the event that the redirect is the same as the current location, the
+    // page won't actually redirect. This is probably the case when the
+    // redirect is to the same hash tag we're currently at. In that case, just
+    // tell the window to trigger it's hashchange event.
+    $(window).trigger('hashchange');
   }
 
   // If HTML contains <script> tags, strip from HTML and evaluate them.
