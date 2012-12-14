@@ -68,7 +68,7 @@ function modalForm(data, url) {
   }
 
   // Slap on a modal header.
-  $form.prepend('<div class="modal-header"><button type="button" class="close" data-dismiss="modal">&times;</button><h3>' + (data.title ? data.title : 'Form') + '</h3></div>');
+  $form.prepend('<div class="modal-header"><button type="button" class="close" data-dismiss="modal" tabindex="-1">&times;</button><h3>' + (data.title ? data.title : 'Form') + '</h3></div>');
 
   // If form has no action defined, use the passed URL.
   if (!$form.is('[action]')) {
