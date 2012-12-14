@@ -99,11 +99,13 @@ function modalForm(data, url) {
       'name': $(this).attr('name'),
       'value': $(this).attr('value')
     }).appendTo($form);
+  });
 
+  // Delegated click handler on all modal footer buttons (see above).
+  $form.on('click', '.modal-footer .btn', function() {
     // Add loading state text to the buttons.
     $(this).button('loading');
   });
-
 
   // When submitting the form, send it via Ajax, hide the current modal, and
   // replace it with a new modal form.
