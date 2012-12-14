@@ -3,7 +3,7 @@ $(document).ready(function() {
   // If hash changes, check if modal should launch.
   // E.g., #/login loads the /login form in a modal.
   $(window).on('hashchange', function() {
-    var match = window.location.hash.match(/^#\/(.*)/);
+    var match = window.location.hash.match(/^#(\/.*)/);
     if (match) {
       $('.modal').modal('hide');
       var url = match[1];
