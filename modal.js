@@ -27,12 +27,7 @@ function modalForm(data, url) {
   // Redirect if a redirect value is present.
   if (data.redirect) {
     window.location = data.redirect;
-
-    // In the event that the redirect is the same as the current location, the
-    // page won't actually redirect. This is probably the case when the
-    // redirect is to the same hash tag we're currently at. In that case, just
-    // tell the window to trigger it's hashchange event.
-    $(window).trigger('hashchange');
+    return;
   }
 
   // If HTML contains <script> tags, strip from HTML and evaluate them.
@@ -147,10 +142,10 @@ function modalForm(data, url) {
   // had validation errors, keep the hash, or if we navigated to a new hash,
   // keep it).
   $form.on('hidden', function() {
-    if (typeof($(this).data('data')) == 'undefined' && $(this).data('hash') === window.location.hash) {
+    if (typeof($form.data('data')) == 'undefined' && $form.data('hash') === window.location.hash) {
       window.location.hash = '';
     }
-    $(this).remove();
+    $form.remove();
   });
 
   // Show the modal now.
